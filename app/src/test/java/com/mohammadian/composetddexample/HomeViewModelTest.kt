@@ -6,7 +6,10 @@ class HomeViewModelTest {
     private lateinit var testObject: HomeViewModel
 
     @Test
-    fun `on home view model init validate state default values`() {
+    fun `on home view model init validate loading state default value as true`() {
+    }
+    @Test
+    fun `on home view model init validate post data state default value as empty posts list`() {
     }
 
     @Test
