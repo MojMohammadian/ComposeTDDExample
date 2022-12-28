@@ -1,5 +1,6 @@
 package com.mohammadian.composetddexample
 
+import org.junit.Assert
 import org.junit.Test
 
 class HomeViewModelTest {
@@ -7,6 +8,12 @@ class HomeViewModelTest {
 
     @Test
     fun `on home view model init validate loading state default value as true`() {
+        //Assemble
+        //Act
+        //Assert
+
+        //Assert
+        Assert.assertEquals(true, testObject.viewState.value.isLoading)
     }
     @Test
     fun `on home view model init validate post data state default value as empty posts list`() {
