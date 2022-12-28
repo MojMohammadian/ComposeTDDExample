@@ -4,6 +4,9 @@ import org.junit.Assert
 import org.junit.Test
 
 class HomeViewModelTest {
+
+    @Mock
+
     private lateinit var testObject: HomeViewModel
 
     @Test
@@ -19,10 +22,23 @@ class HomeViewModelTest {
     }
     @Test
     fun `on home view model init validate post data state default value as empty posts list`() {
+        //Assemble
+        //Act
+        testObject = HomeViewModel()
+
+        //Assert
+        Assert.assertEquals(listOf<PostDto>(), testObject.viewState.value.postsListData)
     }
 
     @Test
     fun `on home view model init get posts returns success with posts list data`() {
+        //Assemble
+        val post1 = testPostDtoData()
+        val post2 = testPostDtoData(id = 1, title = "Post 1", body = "Post 1 Body")
+        //Act
+        testObject = HomeViewModel()
+        //Assert
+        Assert.assertEquals(listOf(post1, post2), testObject.viewState.value.postsListData)
     }
 
     @Test

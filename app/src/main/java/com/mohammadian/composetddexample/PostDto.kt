@@ -1,5 +1,7 @@
 package com.mohammadian.composetddexample
 
-class PostDto {
-
-}
+data class PostDto(
+    val id: Int,
+    val title: String,
+    val body: String,
+)
