@@ -5,7 +5,6 @@ class HomeViewModel : BaseViewModel<
         HomeScreenContract.State,
         HomeScreenContract.Effect
         >() {
-    override fun setInitialState(): HomeScreenContract.State {
-        TODO("Not yet implemented")
-    }
+    override fun setInitialState(): HomeScreenContract.State =
+        HomeScreenContract.State(isLoading = true)
 }

@@ -9,8 +9,10 @@ class HomeViewModelTest {
     @Test
     fun `on home view model init validate loading state default value as true`() {
         //Assemble
+        // We don't have any pre-requisite for this test
+
         //Act
-        //Assert
+        testObject = HomeViewModel()
 
         //Assert
         Assert.assertEquals(true, testObject.viewState.value.isLoading)
