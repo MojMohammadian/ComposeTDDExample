@@ -1,11 +1,20 @@
 package com.mohammadian.composetddexample
 
+import com.mohammadian.composetddexample.api.HomeRepository
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.consumeAsFlow
 import org.junit.Assert
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.mockito.Mockito
+import org.mockito.junit.MockitoJUnitRunner
 
+@RunWith(MockitoJUnitRunner::class)
 class HomeViewModelTest {
 
     @Mock
+    private lateinit var homeRepository : HomeRepository
 
     private lateinit var testObject: HomeViewModel
 
@@ -22,6 +31,7 @@ class HomeViewModelTest {
     }
     @Test
     fun `on home view model init validate post data state default value as empty posts list`() {
+
         //Assemble
         //Act
         testObject = HomeViewModel()
@@ -35,6 +45,12 @@ class HomeViewModelTest {
         //Assemble
         val post1 = testPostDtoData()
         val post2 = testPostDtoData(id = 1, title = "Post 1", body = "Post 1 Body")
+
+        val subject = Channel<List<PostDto>>()
+
+        Mockito.`when`(homeRepository.getPostsData()).thenReturn(subject.consumeAsFlow())
+
+
         //Act
         testObject = HomeViewModel()
         //Assert
